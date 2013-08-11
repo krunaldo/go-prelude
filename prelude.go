@@ -1,14 +1,19 @@
 package prelude
 
-func Arr(a ...interface{}) []interface{} {
-    return a
+import (
+    "fmt"
+    "strings"
+)
+
+type Arr []interface{}
+type Dict map[string]interface{}
+
+// fmt.Println( Concat(1, 2, []int{4,5,6}, "foo", "bar") )
+func Concat(args ...interface{}) string {
+    var parts []string
+    for _, arg := range args {
+        parts = append(parts, fmt.Sprintf("%v", arg))
+    }
+    return strings.Join(parts, "")
 }
 
-func Dict(a ...interface{}) map[string]interface{} {
-    length := len(a)
-    m := make(map[string]interface{}, length)
-    for i:=0; i<length; i+=2 {
-        m[a[i].(string)] = a[i+1]
-    }
-    return m
-}
