@@ -17,3 +17,23 @@ func Concat(args ...interface{}) string {
     return strings.Join(parts, "")
 }
 
+type Tuple2 struct {
+    A, B interface{}
+}
+func (t Tuple2) Get() (a, b interface{}) {
+    return t.A, t.B
+}
+
+type Tuple3 struct {
+    A, B, C interface{}
+}
+func (t Tuple3) Get() (a, b, c interface{}) {
+    return t.A, t.B, t.C
+}
+
+type Tuple4 struct {
+    A, B, C, D interface{}
+}
+func (t Tuple4) Get() (a, b, c, d interface{}) {
+    return t.A, t.B, t.C, t.D
+}
