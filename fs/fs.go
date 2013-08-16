@@ -1,5 +1,10 @@
 package fs
 
+import (
+    "fmt"
+    "os"
+)
+
 func EnsureDir(path string) (*os.File, error) {
     // open it
     dirFile, err := os.OpenFile(path, os.O_RDONLY, os.ModeDir)
