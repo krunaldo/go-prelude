@@ -5,7 +5,7 @@ import (
     "os"
 )
 
-func EnsureDir(path string) (*os.File, error) {
+func EnsureDirOpen(path string) (*os.File, error) {
     // open it
     dirFile, err := os.OpenFile(path, os.O_RDONLY, os.ModeDir)
     if os.IsNotExist(err) {
@@ -24,4 +24,14 @@ func EnsureDir(path string) (*os.File, error) {
         }
     }
     return dirFile, err
+}
+
+func EnsureDir(path string) (bool, error) {
+    file, err := EnsureDirOpen(path)
+    if file != nil {
+        file.Close()
+        return true, err
+    } else {
+        return false, err
+    }
 }
